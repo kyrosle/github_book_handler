@@ -1,0 +1,5 @@
+inside-std-rust-1:
+  local: false
+  path: "https://github.com/kyrosle/inside-std-rust"
+inside-std-rust-2:
+  local: true
