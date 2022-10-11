@@ -8,6 +8,8 @@ use salvo::{serve_static::{EmbeddedFileExt, static_embed}, cors::Cors, prelude::
 mod bookhandler;
 mod configs;
 
+static DOMAIN: &'static str = "http://localhost:8080";
+
 #[derive(Template, Debug)]
 #[template(path = "index.html")]
 struct Items {
@@ -47,7 +49,7 @@ async fn home(res: &mut Response, depot: &Depot) {
             title: k.clone(),
             path: {
                 let book_name = k.clone();
-                format!("http://localhost:8080/books/{}/book/index.html", book_name)
+                format!("{}/books/{}/book/index.html",DOMAIN, book_name)
             },
         })
     }
@@ -62,15 +64,15 @@ struct Assets;
 #[tokio::main]
 async fn main() {
     let cors_handler = Cors::builder()
-        .allow_origin("http://localhost:8080")
+        .allow_origin(DOMAIN)
         .allow_methods(vec!["GET"])
         .build();
     let router = Router::new().hoop(read_config).hoop(cors_handler).get(home);
     let router = router.push(
         Router::with_path("<**path>").get(static_embed::<Assets>().with_fallback("index.html")),
     );
-    println!("Listening the | http://localhost:8080 |");
-    Server::new(TcpListener::bind("localhost:8080"))
+    println!("Listening the | {} |", DOMAIN);
+    Server::new(TcpListener::bind(DOMAIN))
         .serve(router)
         .await;
 }
