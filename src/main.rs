@@ -1,12 +1,9 @@
 use crate::configs::Configs;
 use askama::Template;
-use bookhandler::{download_github, get_book_resources_path};
+use bookhandler::download_github;
+use bookhandler::get_book_resources_path;
 use rust_embed::RustEmbed;
-use salvo::{
-    cors::Cors,
-    prelude::*,
-    serve_static::{static_embed, EmbeddedFileExt},
-};
+use salvo::{serve_static::{EmbeddedFileExt, static_embed}, cors::Cors, prelude::*};
 
 mod bookhandler;
 mod configs;
