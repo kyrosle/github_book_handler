@@ -1,12 +1,7 @@
-use crate::configs::Configs;
 use askama::Template;
-use bookhandler::download_github;
-use bookhandler::get_book_resources_path;
+use gitbook_manager::{configs::Configs, bookhandler::download_github};
 use rust_embed::RustEmbed;
-use salvo::{serve_static::{EmbeddedFileExt, static_embed}, cors::Cors, prelude::*};
-
-mod bookhandler;
-mod configs;
+use salvo::{handler, Depot, Response, writer::Text, cors::Cors, Router, serve_static::static_embed, prelude::TcpListener, Server};
 
 static DOMAIN: &'static str = "http://localhost:8080";
 

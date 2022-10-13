@@ -5,25 +5,49 @@ edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+[[bin]]
+name = "server"
+path = "src/bin/server.rs"
+
+[[bin]]
+name = "ui"
+path = "src/bin/ui.rs"
+
 [dependencies]
+# web framework
 salvo = { version = "*", features = ["serve-static", "cors"] }
 
+# async support
 tokio = { version = "1", features = ["full"] }
+
+# not used yet
 lazy_static = "1.4.0"
+
+# fast to handler Result
 anyhow = "1.0.65"
 
+# Serlizer support
 serde_yaml = "0.9.13"
 serde = { version = "1.0.145", features = ["derive"] }
 
+# html template
 askama = "0.11.1"
+
+# git clone tool
 git2 = "0.15.0"
+
+# set up resources library
 rust-embed = "6.4.1"
 
-# dioxus = { version = "0.2.4", features = ["web"] }
+# web UI framework
+dioxus = { version = "0.2.4", features = ["web", "dioxus-interpreter-js"] }
 
 # rbatis
 log = "0.4"
-fast_log="1.2.2"
-rbs = { version = "0.1"}
-rbatis = { version = "4.0"}
-rbdc-pg={version="0.1"}
+fast_log = "1.2.2"
+rbs = { version = "0.1" }
+rbatis = { version = "4.0" }
+# for postgresql database
+rbdc-pg = { version = "0.1" }
+
+getrandom = { version = "0.2", features = ["js"] }
