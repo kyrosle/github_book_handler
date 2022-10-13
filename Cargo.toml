@@ -8,11 +8,22 @@ edition = "2021"
 [dependencies]
 salvo = { version = "*", features = ["serve-static", "cors"] }
 
-tokio = { version = "1", features = ["macros"] }
+tokio = { version = "1", features = ["full"] }
 lazy_static = "1.4.0"
 anyhow = "1.0.65"
+
 serde_yaml = "0.9.13"
 serde = { version = "1.0.145", features = ["derive"] }
+
 askama = "0.11.1"
 git2 = "0.15.0"
 rust-embed = "6.4.1"
+
+# dioxus = { version = "0.2.4", features = ["web"] }
+
+# rbatis
+log = "0.4"
+fast_log="1.2.2"
+rbs = { version = "0.1"}
+rbatis = { version = "4.0"}
+rbdc-pg={version="0.1"}
