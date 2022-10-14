@@ -1,7 +1,10 @@
 use askama::Template;
-use gitbook_manager::{configs::Configs, bookhandler::download_github};
+use crate::{configs::Configs, bookhandler::download_github};
 use rust_embed::RustEmbed;
 use salvo::{handler, Depot, Response, writer::Text, cors::Cors, Router, serve_static::static_embed, prelude::TcpListener, Server};
+
+mod bookhandler;
+mod configs;
 
 static DOMAIN: &'static str = "http://localhost:8080";
 
