@@ -8,6 +8,6 @@ fn main() {
 
 fn app(cx: Scope) -> Element {
     cx.render(rsx!{
-        div { "hello, wasm!" }
+        div { "hello kyros, wasm!" }
     })
 }

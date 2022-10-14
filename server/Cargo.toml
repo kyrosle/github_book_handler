@@ -11,8 +11,6 @@ salvo = { version = "*", features = ["serve-static", "cors"] }
 
 # async support
 tokio = { version = "1", features = ["full"] }
-
-# not used yet
 lazy_static = "1.4.0"
 
 # fast to handler Result

@@ -1,0 +1,4 @@
+test-server:
+  domains: "book.kyros.top"
+  ip: localhost
+  port: 7890
