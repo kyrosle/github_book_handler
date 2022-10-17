@@ -1,4 +1,4 @@
 /server/target
-/server/resources/books/inside-std-rust-1
+/server/resources/books/*
 /target
 /web-ui/dist

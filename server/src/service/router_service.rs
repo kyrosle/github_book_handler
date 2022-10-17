@@ -10,13 +10,13 @@ use super::{Item, Items};
 pub async fn home(res: &mut Response, depot: &Depot) {
     let config = depot.get::<BookConfigs>("config").unwrap();
     let mut items = Items { items: vec![] };
-    let DOMAIN = format!("{}:{}", *SERVER_IP, *SERVER_PORT);
+    let domain = format!("{}:{}", *SERVER_IP, *SERVER_PORT);
     for (k, _v) in config.configs.iter() {
         items.items.push(Item {
             title: k.clone(),
             path: {
                 let book_name = k.clone();
-                format!("{}/books/{}/book/index.html",DOMAIN, book_name)
+                format!("{}/books/{}/book/index.html",domain, book_name)
             },
         })
     }

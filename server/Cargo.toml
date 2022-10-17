@@ -5,6 +5,10 @@ edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+[[bin]]
+name = "server"
+path = "src/bin/server.rs"
+
 [dependencies]
 # web framework
 salvo = { version = "*", features = ["serve-static", "cors"] }
@@ -36,4 +40,4 @@ rbs = { version = "0.1" }
 rbatis = { version = "4.0" }
 # for postgresql database
 rbdc-pg = { version = "0.1" }
-
+markdown = "0.3.0"

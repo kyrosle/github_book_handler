@@ -1,5 +1,3 @@
-// main.rs
-
 use dioxus::prelude::*;
 
 fn main() {
@@ -7,7 +5,11 @@ fn main() {
 }
 
 fn app(cx: Scope) -> Element {
-    cx.render(rsx!{
-        div { "hello kyros, wasm!" }
+    let value = use_state(&cx, || String::from("hello world!"));
+    cx.render(rsx! {
+        input {
+            oninput : move |evt| value.set(evt.value.clone()),
+            value: "{value}"
+        }
     })
 }
